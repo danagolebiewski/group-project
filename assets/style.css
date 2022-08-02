@@ -16,19 +16,11 @@
 #search-btn {
     display: inline-flex;
 }
-
 #results {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
-
-
-.header {
-  height: 100px;
-  margin-bottom: 3em;
-}
-
 .footer {
   position: fixed;
   left: 0;
@@ -38,12 +30,10 @@
   text-align: center;
   padding: 1rem 1rem 2rem !important;
 }
-
 .button {
   width: 20%;
 
 }
-
 .searchbutton {
   text-align: center;
 }
