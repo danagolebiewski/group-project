@@ -12,3 +12,8 @@
 #search-btn {
     display: inline-flex;
 }
+
+.header {
+  height: 100px;
+  margin-bottom: 3em;
+}
