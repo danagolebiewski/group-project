@@ -1,4 +1,14 @@
 #input-box {
-    display: inline-block;
+    display: inline-flex;
+    flex-direction: row;
+    width: 100%;
 }
-
+.input {
+    display: inline-flex;
+}
+.select {
+    display: inline-flex;
+}
+#search-btn {
+    display: inline-flex;
+}
