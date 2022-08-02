@@ -16,11 +16,16 @@
 #search-btn {
     display: inline-flex;
 }
-<<<<<<< Updated upstream
-=======
+
 #results {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
->>>>>>> Stashed changes
+
+
+.header {
+  height: 100px;
+  margin-bottom: 3em;
+}
+
