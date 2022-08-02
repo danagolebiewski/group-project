@@ -1,4 +1,6 @@
-console.log("Hello")
+
+console.log("Hello World v3.0 the best version ever")
+
 //variables
 
 //functions (pulling APIs filter out data putting into variables)
