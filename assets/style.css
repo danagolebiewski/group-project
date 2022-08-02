@@ -1,3 +1,7 @@
+.header {
+    height: 100px;
+    margin-bottom: 3em;
+  }
 #input-box {
     display: inline-flex;
     flex-direction: row;
@@ -12,6 +16,13 @@
 #search-btn {
     display: inline-flex;
 }
+
+#results {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
 
 .header {
   height: 100px;
