@@ -1,6 +1,6 @@
 //variables
 var searchBtnEl = document.getElementById("search-btn button is-info");
-var cityNameEl = document.getElementById("input-box");
+var cityNameEl = document.getElementById("inputInput");
 
 //functions (pulling APIs filter out data putting into variables)
 
@@ -9,16 +9,17 @@ var cityNameEl = document.getElementById("input-box");
 //special functions (adding event listener: on search click and restaurant selection click)
 
 var apiKey = "JQBwiKz7mElblzM0fnId15X3ngEynG51";
-var lat = "";
-var lng = "";
+var apiKeyBing = "Aopp0CnJgRFrESVuZ-oS2AEfd7f2ydTjP2S_dm4uVahSSWfS1D0ydLGwQxGV3B21";
+// var lat = "";
+// var lng = "";
 
 function pullResults() {
     console.log(cityNameEl.value);
-    fetch(`http://www.mapquestapi.com/geocoding/v1/address?key=${apiKey}&location=${cityNameEl.value}`)
+    fetch(`https://www.mapquestapi.com/geocoding/v1/address?key=${apiKey}&location=${cityNameEl.value}`)
         .then(response => response.json())
         .then(response => {
-            lat = response.results[0].locations[0].displayLatLng.lat;
-            lng = response.results[0].locations[0].displayLatLng.lng;
+            let lat = response.results[0].locations[0].displayLatLng.lat;
+            let lng = response.results[0].locations[0].displayLatLng.lng;
 
             console.log(response);
             console.log(lat, lng);
@@ -30,7 +31,7 @@ function pullResults() {
 }
 
 function nameFunction(lng, lat) {
-    fetch(`http://www.mapquestapi.com/search/v4/place?key=${apiKey}&q=restaurants&sort=relevance&location=${lng},${lat}`)
+    fetch(`https://www.mapquestapi.com/search/v4/place?key=${apiKey}&q=restaurants&sort=relevance&location=${lng},${lat}`)
         .then(response => response.json())
         .then(response => {
 
@@ -39,4 +40,4 @@ function nameFunction(lng, lat) {
         .catch(err => console.log(err));
 }
 searchBtnEl.addEventListener('click', pullResults);
-nameFunction("-104.984853", "39.738453");
+// nameFunction("-104.984853", "39.738453");
