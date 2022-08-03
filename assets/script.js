@@ -40,3 +40,15 @@ function nameFunction(lng, lat) {
 }
 searchBtnEl.addEventListener('click', pullResults);
 nameFunction("-104.984853", "39.738453");
+
+;var redirectUrl = './assets/404.html';
+
+// function errorPage() {
+//   // Check the response value is equal to 404.
+//   if (httpRequest.status === 404) {
+//     // If the page is not on the 404 page, redirect to it.
+//     document.location.replace(redirectUrl);
+//   } else {
+//     return response.json();
+//   } 
+// };
