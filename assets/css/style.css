@@ -1,0 +1,39 @@
+.header {
+    height: 100px;
+    margin-bottom: 3em;
+  }
+#input-box {
+    display: inline-flex;
+    flex-direction: row;
+    width: 100%;
+}
+.input {
+    display: inline-flex;
+}
+.select {
+    display: inline-flex;
+}
+#search-btn {
+    display: inline-flex;
+}
+#results {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+  padding: 1rem 1rem 2rem !important;
+}
+.button {
+  width: 20%;
+
+}
+.searchbutton {
+  text-align: center;
+}
