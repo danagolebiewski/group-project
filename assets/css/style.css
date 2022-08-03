@@ -1,25 +1,25 @@
 .header {
-  height: 100px;
-  margin-bottom: 3em;
-}
+    height: 100px;
+    margin-bottom: 3em;
+  }
 #input-box {
-  display: inline-flex;
-  flex-direction: row;
-  width: 100%;
+    display: inline-flex;
+    flex-direction: row;
+    width: 100%;
 }
 .input {
-  display: inline-flex;
+    display: inline-flex;
 }
 .select {
-  display: inline-flex;
+    display: inline-flex;
 }
 #search-btn {
-  display: inline-flex;
+    display: inline-flex;
 }
 #results {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 .footer {
   position: fixed;
@@ -32,6 +32,7 @@
 }
 .button {
   width: 20%;
+
 }
 .searchbutton {
   text-align: center;
