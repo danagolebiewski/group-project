@@ -38,10 +38,12 @@ function restaurantQuery(lng, lat) {
             console.log(response);
             // response = JSON.stringify(response);
             for (let index = 0; index < response.results.length; index++) {
+                let btn = document.createElement("button");
                 let address = response.results[index].displayString;
                 // addressArray[index] = address[index];
                 
-                restaurantEl.append(address);
+                restaurantEl.append(btn);
+                btn.append(address);
             }
         })
         .catch(err => console.log(err));
