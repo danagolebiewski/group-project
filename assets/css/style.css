@@ -42,5 +42,7 @@
   text-align: center;
 }
 .has-bg-img {
-  background: url(/group-project/assets/images/heroimage.jpeg);
+  background: url(../images/heroimage.jpeg);
+  -webkit-text-stroke-color: black;
+  -webkit-text-stroke-width: .75px;
 }
