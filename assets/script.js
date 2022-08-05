@@ -1,6 +1,7 @@
 //variables
 var searchBtnEl = document.getElementById("search-btn button is-info");
 var cityNameEl = document.getElementById("inputInput");
+var restaurantEl = document.getElementById("restaurant");
 
 //functions (pulling APIs filter out data putting into variables)
 
@@ -10,8 +11,6 @@ var cityNameEl = document.getElementById("inputInput");
 
 var apiKey = "JQBwiKz7mElblzM0fnId15X3ngEynG51";
 var apiKeyBing = "Aopp0CnJgRFrESVuZ-oS2AEfd7f2ydTjP2S_dm4uVahSSWfS1D0ydLGwQxGV3B21";
-// var lat = "";
-// var lng = "";
 
 function pullResults() {
     console.log(cityNameEl.value);
@@ -20,37 +19,40 @@ function pullResults() {
         .then(response => {
             let lat = response.results[0].locations[0].displayLatLng.lat;
             let lng = response.results[0].locations[0].displayLatLng.lng;
-
-            console.log(response);
-            console.log(lat, lng);
-
+            restaurantQuery(lng, lat);
         })
         .catch(err => console.log(err));
 
-
 }
 
-function nameFunction(lng, lat) {
+function restaurantQuery(lng, lat) {
     fetch(`http://www.mapquestapi.com/search/v4/place?key=${apiKey}&q=restaurants&sort=relevance&location=${lng},${lat}`)
         .then(response => {
-          errorPage(response);
-          console.log(response);
-          return response.json()
+            errorPage(response);
+            console.log(response);
+            return response.json()
         })
         .then(response => {
-
+            
+            let addressArray = [];
             console.log(response);
+            // response = JSON.stringify(response);
+            for (let index = 0; index < response.results.length; index++) {
+                let address = response.results[index].displayString;
+                // addressArray[index] = address[index];
+                
+                restaurantEl.append(address);
+            }
         })
         .catch(err => console.log(err));
 }
 searchBtnEl.addEventListener('click', pullResults);
-nameFunction("-104.984853", "39.738453");
 
 var redirectUrl = './assets/404.html';
 
 function errorPage(request) {
-  console.log('Hello')
-  if (request.status === 404) {
-    document.location.replace(redirectUrl);
-  } 
+    console.log('Hello')
+    if (request.status === 404) {
+        document.location.replace(redirectUrl);
+    }
 };
