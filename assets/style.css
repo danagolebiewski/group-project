@@ -1,7 +1,8 @@
-.header {
+.hero {
   height: 100px;
   margin-bottom: 3em;
 }
+
 #input-box {
   display: inline-flex;
   flex-direction: row;
