@@ -2,6 +2,7 @@
 var searchBtnEl = document.getElementById("search-btn button is-info");
 var cityNameEl = document.getElementById("inputInput");
 var restaurantEl = document.getElementById("restaurant");
+var btn = document.createElement("button");
 
 //functions (pulling APIs filter out data putting into variables)
 
@@ -33,17 +34,18 @@ function restaurantQuery(lng, lat) {
             return response.json()
         })
         .then(response => {
-            
+
+
             let addressArray = [];
             console.log(response);
             // response = JSON.stringify(response);
             for (let index = 0; index < response.results.length; index++) {
-                let btn = document.createElement("button");
                 let address = response.results[index].displayString;
-                // addressArray[index] = address[index];
-                
-                restaurantEl.append(btn);
+
+                btn = document.createElement("button");
                 btn.append(address);
+                restaurantEl.append(btn);
+                restaurantEl.addEventListener('click', movieQuery);
             }
         })
         .catch(err => console.log(err));
@@ -58,3 +60,9 @@ function errorPage(request) {
         document.location.replace(redirectUrl);
     }
 };
+
+function movieQuery(event) {
+    console.log(event.target.textContent);
+    
+
+}
