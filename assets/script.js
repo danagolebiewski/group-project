@@ -31,7 +31,11 @@ function pullResults() {
 
 function nameFunction(lng, lat) {
     fetch(`http://www.mapquestapi.com/search/v4/place?key=${apiKey}&q=restaurants&sort=relevance&location=${lng},${lat}`)
-        .then(response => response.json())
+        .then(response => {
+          errorPage(response);
+          console.log(response);
+          return response.json()
+        })
         .then(response => {
 
             console.log(response);
@@ -41,14 +45,11 @@ function nameFunction(lng, lat) {
 searchBtnEl.addEventListener('click', pullResults);
 nameFunction("-104.984853", "39.738453");
 
-;var redirectUrl = './assets/404.html';
+var redirectUrl = './assets/404.html';
 
-// function errorPage() {
-//   // Check the response value is equal to 404.
-//   if (httpRequest.status === 404) {
-//     // If the page is not on the 404 page, redirect to it.
-//     document.location.replace(redirectUrl);
-//   } else {
-//     return response.json();
-//   } 
-// };
+function errorPage(request) {
+  console.log('Hello')
+  if (request.status === 404) {
+    document.location.replace(redirectUrl);
+  } 
+};
