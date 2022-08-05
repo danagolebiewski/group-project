@@ -31,8 +31,12 @@ function pullResults() {
 }
 
 function nameFunction(lng, lat) {
-    fetch(`https://www.mapquestapi.com/search/v4/place?key=${apiKey}&q=restaurants&sort=relevance&location=${lng},${lat}`)
-        .then(response => response.json())
+    fetch(`http://www.mapquestapi.com/search/v4/place?key=${apiKey}&q=restaurants&sort=relevance&location=${lng},${lat}`)
+        .then(response => {
+          errorPage(response);
+          console.log(response);
+          return response.json()
+        })
         .then(response => {
 
             console.log(response);
@@ -44,25 +48,9 @@ nameFunction("-104.984853", "39.738453");
 
 var redirectUrl = './assets/404.html';
 
-const options = {
-    method: 'GET',
-    headers: {
-      Authorization: 'Bearer urT-4ksx_PmTkRAzM73ORM1LaWbsgbEd9851tu_60c-S_aJcrP7RIx4a7QFACdUXS721G_ZZ3DAep1UddsN8gXJluz-zkz1np38_v1OyVn9QFxWJw6zG4FwJFHrlYnYx'
-    }
-  };
-fetch(`https://api.yelp.com/v3/autocomplete?text=del&latitude=37.786882&longitude=-122.399972`)
-.then(response => response.json())
-.then(response => {
-
-    console.log(response);
-})
-
-// function errorPage() {
-//   // Check the response value is equal to 404.
-//   if (httpRequest.status === 404) {
-//     // If the page is not on the 404 page, redirect to it.
-//     document.location.replace(redirectUrl);
-//   } else {
-//     return response.json();
-//   } 
-// };
+function errorPage(request) {
+  console.log('Hello')
+  if (request.status === 404) {
+    document.location.replace(redirectUrl);
+  } 
+};
