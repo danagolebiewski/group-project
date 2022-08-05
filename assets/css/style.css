@@ -41,3 +41,6 @@
 .searchbutton {
   text-align: center;
 }
+.has-bg-img {
+  background: url(/group-project/assets/images/heroimage.jpeg);
+}
