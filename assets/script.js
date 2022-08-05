@@ -23,7 +23,6 @@ function pullResults() {
             restaurantQuery(lng, lat);
         })
         .catch(err => console.log(err));
-
 }
 
 function restaurantQuery(lng, lat) {
