@@ -3,3 +3,10 @@
   align-items: center;
   justify-content: center;
 }
+.button {
+    font-family: 'Slackey', cursive;
+    display: inline-flex;
+    text-align: center;
+    width: 40%;
+    margin-left: 14em;
+}
