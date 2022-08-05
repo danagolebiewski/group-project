@@ -35,16 +35,17 @@ function restaurantQuery(lng, lat) {
         })
         .then(response => {
 
+
             let addressArray = [];
             console.log(response);
             // response = JSON.stringify(response);
             for (let index = 0; index < response.results.length; index++) {
                 let address = response.results[index].displayString;
-                // addressArray[index] = address[index];
+
                 btn = document.createElement("button");
-                addressArray.push(address);
-                btn.append(addressArray[index]);
+                btn.append(address);
                 restaurantEl.append(btn);
+                restaurantEl.addEventListener('click', movieQuery);
             }
         })
         .catch(err => console.log(err));
@@ -62,8 +63,8 @@ function errorPage(request) {
 
 function movieQuery() {
 
+    
     console.log("helloworld");
+    console.log (btn);
 
 }
-
-btn.addEventListener('click', movieQuery);
