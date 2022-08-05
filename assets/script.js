@@ -61,10 +61,8 @@ function errorPage(request) {
     }
 };
 
-function movieQuery() {
-
+function movieQuery(event) {
+    console.log(event.target.textContent);
     
-    console.log("helloworld");
-    console.log (btn);
 
 }
