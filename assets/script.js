@@ -42,7 +42,20 @@ function nameFunction(lng, lat) {
 searchBtnEl.addEventListener('click', pullResults);
 nameFunction("-104.984853", "39.738453");
 
-;var redirectUrl = './assets/404.html';
+var redirectUrl = './assets/404.html';
+
+const options = {
+    method: 'GET',
+    headers: {
+      Authorization: 'Bearer urT-4ksx_PmTkRAzM73ORM1LaWbsgbEd9851tu_60c-S_aJcrP7RIx4a7QFACdUXS721G_ZZ3DAep1UddsN8gXJluz-zkz1np38_v1OyVn9QFxWJw6zG4FwJFHrlYnYx'
+    }
+  };
+fetch(`https://api.yelp.com/v3/autocomplete?text=del&latitude=37.786882&longitude=-122.399972`)
+.then(response => response.json())
+.then(response => {
+
+    console.log(response);
+})
 
 // function errorPage() {
 //   // Check the response value is equal to 404.
