@@ -43,4 +43,6 @@
 }
 .has-bg-img {
   background: url(/group-project/assets/images/heroimage.jpeg);
+  -webkit-text-stroke-color: black;
+  -webkit-text-stroke-width: .75px;
 }
