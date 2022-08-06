@@ -1,5 +1,5 @@
 //variables
-var searchBtnEl = document.getElementById("search-btn button is-info");
+var searchBtnEl = document.getElementById("search-btn button");
 var cityNameEl = document.getElementById("inputInput");
 var restaurantEl = document.getElementById("restaurant");
 var btn = document.createElement("button");
