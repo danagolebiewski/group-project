@@ -48,6 +48,29 @@ function restaurantQuery(lng, lat) {
             }
         })
         .catch(err => console.log(err));
+
+        console.log(event.target.textContent);
+    
+        var rightMeow = moment().toISOString();
+        console.log(rightMeow);
+    
+        var settings = {
+            "url": "https://api-gate2.movieglu.com/cinemasNearby/?n=5",
+            "method": "GET",
+            "timeout": 0,
+            "headers": {
+            "api-version": "v200",
+            "Authorization": "Basic REVOVl9YWDoxWUlNWVZTVWFRc2M=",
+            "client": "DENV",
+            "x-api-key": "t2QC6FAtLbau55PvzfCsw986t0Fg4Lpa1jPv4qub",
+            "device-datetime": rightMeow,
+            "territory": "XX",
+            },
+            };
+            
+            $.ajax(settings).done(function (response) {
+            console.log(response);
+            });
 }
 searchBtnEl.addEventListener('click', pullResults);
 
@@ -61,27 +84,6 @@ function errorPage(request) {
 };
 
 function movieQuery(event) {
-    console.log(event.target.textContent);
-    
-    var rightMeow = moment().toISOString();
-    console.log(rightMeow);
 
-    var settings = {
-        "url": "https://api-gate2.movieglu.com/filmsNowShowing/?n=10",
-        "method": "GET",
-        "timeout": 0,
-        "headers": {
-        "api-version": "v200",
-        "Authorization": "Basic REVOVl9YWDoxWUlNWVZTVWFRc2M=",
-        "client": "DENV",
-        "x-api-key": "t2QC6FAtLbau55PvzfCsw986t0Fg4Lpa1jPv4qub",
-        "device-datetime": rightMeow,
-        "territory": "XX",
-        },
-        };
-        
-        $.ajax(settings).done(function (response) {
-        console.log(response);
-        });
 }
 
