@@ -66,7 +66,7 @@ function movieQuery(event) {
 
 }
 
-// var rightMeow = moment().format('yyyy-mm-ddThh:mm:ss.sssZ')
+var rightMeow = moment().format('yyyy-mm-ddThh:mm:ss.sssZ')
 var settings = {
     "url": "https://api-gate2.movieglu.com/filmsNowShowing/?n=10",
     "method": "GET",
