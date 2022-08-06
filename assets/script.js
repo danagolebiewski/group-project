@@ -63,8 +63,9 @@ function errorPage(request) {
 function movieQuery(event) {
     console.log(event.target.textContent);
     
-    var rightMeow = moment().format('yyyy-MM-DDThh:mm:ss.SSS[Z]')
+    var rightMeow = moment().toISOString();
     console.log(rightMeow);
+
     var settings = {
         "url": "https://api-gate2.movieglu.com/filmsNowShowing/?n=10",
         "method": "GET",
