@@ -1,5 +1,5 @@
 //variables
-var searchBtnEl = document.getElementById("search-btn button is-info");
+var searchBtnEl = document.getElementById("search-btn button");
 var cityNameEl = document.getElementById("inputInput");
 var restaurantEl = document.getElementById("restaurant");
 var btn = document.createElement("button");
@@ -33,9 +33,6 @@ function restaurantQuery(lng, lat) {
             return response.json()
         })
         .then(response => {
-
-
-            let addressArray = [];
             console.log(response);
             // response = JSON.stringify(response);
             for (let index = 0; index < response.results.length; index++) {
@@ -49,28 +46,7 @@ function restaurantQuery(lng, lat) {
         })
         .catch(err => console.log(err));
 
-        console.log(event.target.textContent);
-    
-        var rightMeow = moment().toISOString();
-        console.log(rightMeow);
-    
-        var settings = {
-            "url": "https://api-gate2.movieglu.com/cinemasNearby/?n=5",
-            "method": "GET",
-            "timeout": 0,
-            "headers": {
-            "api-version": "v200",
-            "Authorization": "Basic REVOVl9YWDoxWUlNWVZTVWFRc2M=",
-            "client": "DENV",
-            "x-api-key": "t2QC6FAtLbau55PvzfCsw986t0Fg4Lpa1jPv4qub",
-            "device-datetime": rightMeow,
-            "territory": "XX",
-            },
-            };
-            
-            $.ajax(settings).done(function (response) {
-            console.log(response);
-            });
+        
 }
 searchBtnEl.addEventListener('click', pullResults);
 
@@ -84,6 +60,28 @@ function errorPage(request) {
 };
 
 function movieQuery(event) {
+    console.log(event.target.textContent);
+    
+    // var rightMeow = moment().toISOString();
+    var rightMeow = moment().format();
+    console.log(rightMeow);
 
+    var settings = {
+        "url": "https://api-gate2.movieglu.com/cinemasNearby/?n=5",
+        "method": "GET",
+        "timeout": 0,
+        "headers": {
+        "api-version": "v200",
+        "Authorization": "Basic REVOVl9YWDoxWUlNWVZTVWFRc2M=",
+        "client": "DENV",
+        "x-api-key": "t2QC6FAtLbau55PvzfCsw986t0Fg4Lpa1jPv4qub",
+        "device-datetime": rightMeow,
+        "territory": "XX",
+        },
+        };
+        
+        $.ajax(settings).done(function (response) {
+        console.log(response);
+        });
 }
 
