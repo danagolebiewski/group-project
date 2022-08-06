@@ -65,3 +65,22 @@ function movieQuery(event) {
     
 
 }
+
+// var rightMeow = moment().format('yyyy-mm-ddThh:mm:ss.sssZ')
+var settings = {
+    "url": "https://api-gate2.movieglu.com/filmsNowShowing/?n=10",
+    "method": "GET",
+    "timeout": 0,
+    "headers": {
+    "api-version": "v200",
+    "Authorization": "Basic REVOVjoyanJib1FKb0s0V1Q=",
+    "client": "DENV",
+    "x-api-key": "4eguyQkKb3aZtkn8n0OU76IH6fjo1J1a1JSs2zLW8",
+    "device-datetime": rightMeow,
+    "territory": "US",
+    },
+    };
+    
+    $.ajax(settings).done(function (response) {
+    console.log(response);
+    });
