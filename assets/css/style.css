@@ -13,7 +13,6 @@
     margin-left: 4em;
 }
 .title {
-  width:fit-content;
   text-align: center;
 }
 .select {
@@ -48,4 +47,10 @@
   background: url(../images/background-image.png);
   -webkit-text-stroke-color: .75px black;
   -webkit-text-stroke-width: .75px;
+}
+
+.hero-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
