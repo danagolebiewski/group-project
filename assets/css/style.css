@@ -11,7 +11,10 @@
     display: inline-flex;
     margin: 1em;
     margin-left: 4em;
-
+}
+.title {
+  width:fit-content;
+  text-align: center;
 }
 .select {
     display: inline-flex;
@@ -42,7 +45,7 @@
   text-align: center;
 }
 .has-bg-img {
-  background: url(/group-project/assets/images/heroimage.jpeg);
-  -webkit-text-stroke-color: black;
+  background: url(../images/background-image.png);
+  -webkit-text-stroke-color: .75px black;
   -webkit-text-stroke-width: .75px;
 }
