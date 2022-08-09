@@ -61,9 +61,6 @@ function errorPage(request) {
 };
 
 function movieQuery(event) {
-    console.log(event.target.textContent);
-
-    // var rightMeow = moment().toISOString();
     var meow = moment();
     var rightMeow = moment(meow, moment.ISO_8601);
     console.log(rightMeow);
@@ -90,7 +87,6 @@ function movieQuery(event) {
             var newimgEl = document.createElement("img");
             newimgEl.setAttribute("src", response.films[index].images.poster[1].medium.film_image);
             movieEl.append(newimgEl);
-
         }
     });
 }
