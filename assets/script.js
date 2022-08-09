@@ -84,9 +84,9 @@ function cinemaLocation(lat, lng){
         "timeout": 0,
         "headers": {
             "api-version": "v200",
-            "Authorization": "Basic REVOVjoyanJib1FKb0s0V1Q=",
+            "Authorization": "Basic VU5JVl82MTpaVWt5OFgxUEwwYzU=",
             "client": "DENV",
-            "x-api-key": "4eguyQkKb3aZtkn8n0OU76IH6fjo1J1a1JSs2zLW",
+            "x-api-key": "uJCtiPlZjU6gCWdPT0NiK3IKXp5Cu7Jf1aomSNYN",
             "device-datetime": rightMeow,
             "territory": "US",
             "geolocation": `${lat};${lng}`, 
@@ -127,9 +127,9 @@ function moviesAndTimes(event){
         "timeout": 0,
         "headers": {
             "api-version": "v200",
-            "Authorization": "Basic REVOVjoyanJib1FKb0s0V1Q=",
+            "Authorization": "Basic VU5JVl82MTpaVWt5OFgxUEwwYzU=",
             "client": "DENV",
-            "x-api-key": "4eguyQkKb3aZtkn8n0OU76IH6fjo1J1a1JSs2zLW",
+            "x-api-key": "uJCtiPlZjU6gCWdPT0NiK3IKXp5Cu7Jf1aomSNYN",
             "device-datetime": rightMeow,
             "territory": "US",
         },
