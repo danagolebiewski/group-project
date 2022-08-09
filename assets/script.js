@@ -4,6 +4,8 @@ var cityNameEl = document.getElementById("inputInput");
 var restaurantEl = document.getElementById("restaurant");
 var btn = document.createElement("button");
 var movieEl = document.getElementById("movie");
+var meow = moment();
+var rightMeow = moment(meow, moment.ISO_8601);
 
 //functions (pulling APIs filter out data putting into variables)
 
@@ -35,7 +37,7 @@ function restaurantQuery(lng, lat) {
         })
         .then(response => {
             console.log(response);
-            // response = JSON.stringify(response);
+
             for (let index = 0; index < response.results.length; index++) {
                 let address = response.results[index].displayString;
 
@@ -44,6 +46,7 @@ function restaurantQuery(lng, lat) {
                 restaurantEl.append(btn);
                 restaurantEl.addEventListener('click', movieQuery);
             }
+            // theaterQuery(lat,lng);
         })
         .catch(err => console.log(err));
 
@@ -61,9 +64,6 @@ function errorPage(request) {
 };
 
 function movieQuery(event) {
-    var meow = moment();
-    var rightMeow = moment(meow, moment.ISO_8601);
-    console.log(rightMeow);
 
     var settings = {
         "url": "https://api-gate2.movieglu.com/filmsNowShowing/?n=10",
@@ -80,15 +80,44 @@ function movieQuery(event) {
     };
 
     $.ajax(settings).done(function (response) {
-        console.log(response);
-
         for (let index = 0; index < response.films.length; index++) {
 
             var newimgEl = document.createElement("img");
             newimgEl.setAttribute("src", response.films[index].images.poster[1].medium.film_image);
-            newimgEl.setAttribute("style", "width:300px;height:400px;")
             movieEl.append(newimgEl);
         }
     });
+
+    function latitAndLongi() {
+        console.log(cityNameEl.value);
+        fetch(`https://www.mapquestapi.com/geocoding/v1/address?key=${apiKey}&location=${cityNameEl.value}`)
+            .then(response => response.json())
+            .then(response => {
+                let lat = response.results[0].locations[0].displayLatLng.lat;
+                let lng = response.results[0].locations[0].displayLatLng.lng;
+                cinemaLocation(lng, lat);
+            })
+            .catch(err => console.log(err));
+    }
 }
 
+function cinemaLocation(lat, lng){
+    var settings = {
+        "url": "https://api-gate2.movieglu.com/cinemasNearby/?n=10",
+        "method": "GET",
+        "timeout": 0,
+        "headers": {
+            "api-version": "v200",
+            "Authorization": "Basic REVOVjoyanJib1FKb0s0V1Q=",
+            "client": "DENV",
+            "x-api-key": "4eguyQkKb3aZtkn8n0OU76IH6fjo1J1a1JSs2zLW",
+            "device-datetime": rightMeow,
+            "territory": "US",
+            "geolocation": `${lat};${lng}`, 
+        },
+    };
+    $.ajax(settings).done(function (response){
+        console.log(response);
+        }
+    )
+}
