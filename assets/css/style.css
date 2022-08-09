@@ -3,9 +3,9 @@
     margin-bottom: 3em;
   }
 #input-box {
-    display: inline-flex;
-    flex-direction: row;
-    width: 83%;
+    width: 50%;
+    margin-left: 25%;
+
 }
 .input {
     display: inline-flex;
