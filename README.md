@@ -25,4 +25,4 @@ HTML, CSS, Bulma, JavaScript and JQuery
 
 
 ## Website Preview 
-![Website Preview]()
+![Website Preview](./assets/images/website-preview.png)
