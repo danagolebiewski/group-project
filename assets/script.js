@@ -129,12 +129,15 @@ function cinemaLocation(lat, lng){
             
 
             btn = document.createElement("button");
+            btn.setAttribute("id", cinemaId);
             btn.append(properAddress);
             moveTheaterEl.append(btn);
-            moveTheaterEl.addEventListener('click', cinemaId);
+            moveTheaterEl.addEventListener('click', moviesAndTimes);
            
         }
         }
     )
 }
-function moviesAndTimes()
+function moviesAndTimes(event){
+    console.log(event.target.id);
+}
