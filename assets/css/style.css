@@ -25,7 +25,7 @@
 }
 #results {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     padding: 2%;
 }
 .footer {
@@ -57,4 +57,8 @@
 
 #container {
   height: 110vh;
+}
+
+#movie {
+  align-items: center;
 }
