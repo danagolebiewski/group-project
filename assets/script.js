@@ -9,6 +9,9 @@ var rightMeow = moment(meow, moment.ISO_8601);
 var apiKey = "JQBwiKz7mElblzM0fnId15X3ngEynG51";
 var apiKeyBing = "Aopp0CnJgRFrESVuZ-oS2AEfd7f2ydTjP2S_dm4uVahSSWfS1D0ydLGwQxGV3B21";
 var moveTheaterEl = document.getElementById("movie_theaters");
+var showtimeEl = document.getElementById("movie_times");
+var todayDate = moment().format("YYYY-MM-DD");
+listItem = document.createElement("ul");
 
 //functions (pulling APIs filter out data putting into variables)
 
@@ -139,9 +142,11 @@ function cinemaLocation(lat, lng){
     )
 }
 function moviesAndTimes(event){
-    console.log(event.target.id);
+
+    var idIsInt = parseInt(event.target.id);
+    console.log(idIsInt);
     var settings = {
-        "url": "https://api-gate2.movieglu.com/cinemasNearby/?n=10",
+        "url": `https://api-gate2.movieglu.com/cinemaShowTimes/?cinema_id=${idIsInt}&date=${todayDate}`,
         "method": "GET",
         "timeout": 0,
         "headers": {
@@ -151,11 +156,28 @@ function moviesAndTimes(event){
             "x-api-key": "4eguyQkKb3aZtkn8n0OU76IH6fjo1J1a1JSs2zLW",
             "device-datetime": rightMeow,
             "territory": "US",
-            "geolocation": `${lat};${lng}`, 
         },
     };
     $.ajax(settings).done(function (response){
+        console.log(response);
 
+        for (let index = 0; index < response.films.length; index++) {
+            let filmName = response.films[index].film_name;
+            let showDates = response.films[index].show_dates[0];
+            let timesForMovie = response.films[index].showings.Standard.times;
+
+            let displayInfo = filmName + " " + showDates;
+
+
+            for (let index = 0; index < response.films[0].showings.Standard.times.length; index++) {
+                
+                displayInfo = displayInfo + " " + timesForMovie;
+            }
+
+            listItem.append(displayInfo)
+            showtimeEl.append(listItem);
+            
+        }
 
     }
     )
