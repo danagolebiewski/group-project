@@ -59,6 +59,8 @@
   height: 110vh;
 }
 
-#movie {
-  align-items: center;
+#results_movies {
+  display: flex;
+  justify-content: space-between;
+  padding: 2%;
 }
