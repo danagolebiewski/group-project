@@ -114,17 +114,21 @@ function cinemaLocation(lat, lng){
         },
     };
     $.ajax(settings).done(function (response){
-        console.log(response);
+        cinemaIDArray = [];
+
         for (let index = 0; index < response.cinemas.length; index++) {
             
-            let cinemaId = cinemas[index].cinema_id;
-            let cinemaName = cinemas[index].cinema_name;
-            let cinemaAddy = cinemas[index].address;
-            let cinemaCity = cinemas[index].city;
-            let cinemaState = cinemas[index].state;
-            let cinemaZip = cinemas[index].postcode;
+            let cinemaId = response.cinemas[index].cinema_id;
+            let cinemaName = response.cinemas[index].cinema_name;
+            let cinemaAddy = response.cinemas[index].address;
+            let cinemaCity = response.cinemas[index].city;
+            let cinemaState = response.cinemas[index].state;
+            let cinemaZip = response.cinemas[index].postcode;
 
-            let properAddress = cinemaName + "" + cinemaAddy + "" + cinemaCity + ", " + cinemaState + "" + cinemaZip;
+            let properAddress = cinemaName + " " + cinemaAddy + " " + cinemaCity + ", " + cinemaState + " " + cinemaZip;
+
+            cinemaIDArray.push(cinemaId);
+
             btn = document.createElement("button");
             btn.append(properAddress);
             moveTheaterEl.append(btn);
