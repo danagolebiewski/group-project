@@ -8,6 +8,7 @@ var meow = moment();
 var rightMeow = moment(meow, moment.ISO_8601);
 var apiKey = "JQBwiKz7mElblzM0fnId15X3ngEynG51";
 var apiKeyBing = "Aopp0CnJgRFrESVuZ-oS2AEfd7f2ydTjP2S_dm4uVahSSWfS1D0ydLGwQxGV3B21";
+var moveTheaterEl = document.getElementById("movie_theaters");
 
 //functions (pulling APIs filter out data putting into variables)
 
@@ -116,7 +117,19 @@ function cinemaLocation(lat, lng){
         console.log(response);
         for (let index = 0; index < response.cinemas.length; index++) {
             
-            
+            let cinemaId = cinemas[index].cinema_id;
+            let cinemaName = cinemas[index].cinema_name;
+            let cinemaAddy = cinemas[index].address;
+            let cinemaCity = cinemas[index].city;
+            let cinemaState = cinemas[index].state;
+            let cinemaZip = cinemas[index].postcode;
+
+            let properAddress = cinemaName + "" + cinemaAddy + "" + cinemaCity + ", " + cinemaState + "" + cinemaZip;
+            btn = document.createElement("button");
+            btn.append(properAddress);
+            moveTheaterEl.append(btn);
+            moveTheaterEl.addEventListener('click', latitAndLongi);
+           
         }
         }
     )
