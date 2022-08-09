@@ -47,7 +47,7 @@ function restaurantQuery(lng, lat) {
         })
         .catch(err => console.log(err));
 
-        
+
 }
 searchBtnEl.addEventListener('click', pullResults);
 
@@ -62,7 +62,7 @@ function errorPage(request) {
 
 function movieQuery(event) {
     console.log(event.target.textContent);
-    
+
     // var rightMeow = moment().toISOString();
     var meow = moment();
     var rightMeow = moment(meow, moment.ISO_8601);
@@ -73,22 +73,25 @@ function movieQuery(event) {
         "method": "GET",
         "timeout": 0,
         "headers": {
-        "api-version": "v200",
-        "Authorization": "Basic REVOVjoyanJib1FKb0s0V1Q=",
-        "client": "DENV",
-        "x-api-key": "4eguyQkKb3aZtkn8n0OU76IH6fjo1J1a1JSs2zLW",
-        "device-datetime": rightMeow,
-        "territory": "US",
+            "api-version": "v200",
+            "Authorization": "Basic REVOVjoyanJib1FKb0s0V1Q=",
+            "client": "DENV",
+            "x-api-key": "4eguyQkKb3aZtkn8n0OU76IH6fjo1J1a1JSs2zLW",
+            "device-datetime": rightMeow,
+            "territory": "US",
         },
-        };
-        
-        $.ajax(settings).done(function (response) {
+    };
+
+    $.ajax(settings).done(function (response) {
         console.log(response);
-        var newimgEl = document.createElement("img");
-        newimgEl.setAttribute("src", response.films[0].images.poster[1].medium.film_image);
 
-        movieEl.append(newimgEl);
+        for (let index = 0; index < response.films.length; index++) {
 
-        });
+            var newimgEl = document.createElement("img");
+            newimgEl.setAttribute("src", response.films[index].images.poster[1].medium.film_image);
+            movieEl.append(newimgEl);
+
+        }
+    });
 }
 
