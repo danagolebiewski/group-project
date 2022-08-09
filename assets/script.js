@@ -11,7 +11,7 @@ var apiKeyBing = "Aopp0CnJgRFrESVuZ-oS2AEfd7f2ydTjP2S_dm4uVahSSWfS1D0ydLGwQxGV3B
 var moveTheaterEl = document.getElementById("movie_theaters");
 var showtimeEl = document.getElementById("movie_times");
 var todayDate = moment().format("YYYY-MM-DD");
-var listItem = document.createElement("ul");
+
 
 //functions (pulling APIs filter out data putting into variables)
 
@@ -77,7 +77,7 @@ function latitAndLongi() {
         .catch(err => console.log(err));
 }
 
-function cinemaLocation(lat, lng){
+function cinemaLocation(lat, lng) {
     var settings = {
         "url": "https://api-gate2.movieglu.com/cinemasNearby/?n=10",
         "method": "GET",
@@ -89,13 +89,13 @@ function cinemaLocation(lat, lng){
             "x-api-key": "uJCtiPlZjU6gCWdPT0NiK3IKXp5Cu7Jf1aomSNYN",
             "device-datetime": rightMeow,
             "territory": "US",
-            "geolocation": `${lat};${lng}`, 
+            "geolocation": `${lat};${lng}`,
         },
     };
-    $.ajax(settings).done(function (response){
+    $.ajax(settings).done(function (response) {
 
         for (let index = 0; index < response.cinemas.length; index++) {
-            
+
             let cinemaId = response.cinemas[index].cinema_id;
             let cinemaName = response.cinemas[index].cinema_name;
             let cinemaAddy = response.cinemas[index].address;
@@ -105,19 +105,19 @@ function cinemaLocation(lat, lng){
 
             let properAddress = cinemaName + " " + cinemaAddy + " " + cinemaCity + ", " + cinemaState + " " + cinemaZip;
 
-            
+
 
             btn = document.createElement("button");
             btn.setAttribute("id", cinemaId);
             btn.append(properAddress);
             moveTheaterEl.append(btn);
             moveTheaterEl.addEventListener('click', moviesAndTimes);
-           
+
         }
-        }
+    }
     )
 }
-function moviesAndTimes(event){
+function moviesAndTimes(event) {
 
     var idIsInt = parseInt(event.target.id);
     console.log(idIsInt);
@@ -134,23 +134,23 @@ function moviesAndTimes(event){
             "territory": "US",
         },
     };
-    $.ajax(settings).done(function (response){
+    $.ajax(settings).done(function (response) {
         console.log(response);
 
         for (let index = 0; index < response.films.length; index++) {
             let filmName = response.films[index].film_name;
             let showDates = response.films[index].show_dates[0];
-            let timesForMovie = response.films[index].showings.Standard.times;
+            let timesForMovie = response.films[index].showings.Standard.times[0];
 
-            let timeToString = toString(timesForMovie);
             let datesToString = toString(showDates);
 
-            let displayInfo = filmName + " " + datesToString + " " + timeToString;
+            let displayInfo = filmName + " " + datesToString + " " + timesForMovie;
 
+            var listItem = document.createElement("li");
 
             listItem.append(displayInfo)
             showtimeEl.append(listItem);
-            
+
         }
 
     }
