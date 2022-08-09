@@ -3,6 +3,7 @@ var searchBtnEl = document.getElementById("search-btn button");
 var cityNameEl = document.getElementById("inputInput");
 var restaurantEl = document.getElementById("restaurant");
 var btn = document.createElement("button");
+var movieEl = document.getElementById("movie");
 
 //functions (pulling APIs filter out data putting into variables)
 
@@ -63,25 +64,31 @@ function movieQuery(event) {
     console.log(event.target.textContent);
     
     // var rightMeow = moment().toISOString();
-    var rightMeow = moment().format();
+    var meow = moment();
+    var rightMeow = moment(meow, moment.ISO_8601);
     console.log(rightMeow);
 
     var settings = {
-        "url": "https://api-gate2.movieglu.com/cinemasNearby/?n=5",
+        "url": "https://api-gate2.movieglu.com/filmsNowShowing/?n=10",
         "method": "GET",
         "timeout": 0,
         "headers": {
         "api-version": "v200",
-        "Authorization": "Basic REVOVl9YWDoxWUlNWVZTVWFRc2M=",
+        "Authorization": "Basic REVOVjoyanJib1FKb0s0V1Q=",
         "client": "DENV",
-        "x-api-key": "t2QC6FAtLbau55PvzfCsw986t0Fg4Lpa1jPv4qub",
+        "x-api-key": "4eguyQkKb3aZtkn8n0OU76IH6fjo1J1a1JSs2zLW",
         "device-datetime": rightMeow,
-        "territory": "XX",
+        "territory": "US",
         },
         };
         
         $.ajax(settings).done(function (response) {
         console.log(response);
+        var newimgEl = document.createElement("img");
+        newimgEl.setAttribute("src", response.films[0].images.poster[1].medium.film_image);
+
+        movieEl.append(newimgEl);
+
         });
 }
 
