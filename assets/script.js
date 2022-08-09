@@ -6,6 +6,8 @@ var btn = document.createElement("button");
 var movieEl = document.getElementById("movie");
 var meow = moment();
 var rightMeow = moment(meow, moment.ISO_8601);
+var apiKey = "JQBwiKz7mElblzM0fnId15X3ngEynG51";
+var apiKeyBing = "Aopp0CnJgRFrESVuZ-oS2AEfd7f2ydTjP2S_dm4uVahSSWfS1D0ydLGwQxGV3B21";
 
 //functions (pulling APIs filter out data putting into variables)
 
@@ -13,8 +15,7 @@ var rightMeow = moment(meow, moment.ISO_8601);
 
 //special functions (adding event listener: on search click and restaurant selection click)
 
-var apiKey = "JQBwiKz7mElblzM0fnId15X3ngEynG51";
-var apiKeyBing = "Aopp0CnJgRFrESVuZ-oS2AEfd7f2ydTjP2S_dm4uVahSSWfS1D0ydLGwQxGV3B21";
+
 
 function pullResults() {
     console.log(cityNameEl.value);
@@ -32,21 +33,17 @@ function restaurantQuery(lng, lat) {
     fetch(`http://www.mapquestapi.com/search/v4/place?key=${apiKey}&q=restaurants&sort=relevance&location=${lng},${lat}`)
         .then(response => {
             errorPage(response);
-            console.log(response);
             return response.json()
         })
         .then(response => {
-            console.log(response);
-
             for (let index = 0; index < response.results.length; index++) {
                 let address = response.results[index].displayString;
 
                 btn = document.createElement("button");
                 btn.append(address);
                 restaurantEl.append(btn);
-                restaurantEl.addEventListener('click', movieQuery);
+                restaurantEl.addEventListener('click', latitAndLongi);
             }
-            // theaterQuery(lat,lng);
         })
         .catch(err => console.log(err));
 
@@ -63,42 +60,41 @@ function errorPage(request) {
     }
 };
 
-function movieQuery(event) {
+// function movieQuery(event) {
 
-    var settings = {
-        "url": "https://api-gate2.movieglu.com/filmsNowShowing/?n=10",
-        "method": "GET",
-        "timeout": 0,
-        "headers": {
-            "api-version": "v200",
-            "Authorization": "Basic REVOVjoyanJib1FKb0s0V1Q=",
-            "client": "DENV",
-            "x-api-key": "4eguyQkKb3aZtkn8n0OU76IH6fjo1J1a1JSs2zLW",
-            "device-datetime": rightMeow,
-            "territory": "US",
-        },
-    };
+//     var settings = {
+//         "url": "https://api-gate2.movieglu.com/filmsNowShowing/?n=10",
+//         "method": "GET",
+//         "timeout": 0,
+//         "headers": {
+//             "api-version": "v200",
+//             "Authorization": "Basic REVOVjoyanJib1FKb0s0V1Q=",
+//             "client": "DENV",
+//             "x-api-key": "4eguyQkKb3aZtkn8n0OU76IH6fjo1J1a1JSs2zLW",
+//             "device-datetime": rightMeow,
+//             "territory": "US",
+//         },
+//     };
 
-    $.ajax(settings).done(function (response) {
-        for (let index = 0; index < response.films.length; index++) {
+//     $.ajax(settings).done(function (response) {
+//         for (let index = 0; index < response.films.length; index++) {
 
-            var newimgEl = document.createElement("img");
-            newimgEl.setAttribute("src", response.films[index].images.poster[1].medium.film_image);
-            movieEl.append(newimgEl);
-        }
-    });
-
-    function latitAndLongi() {
-        console.log(cityNameEl.value);
-        fetch(`https://www.mapquestapi.com/geocoding/v1/address?key=${apiKey}&location=${cityNameEl.value}`)
-            .then(response => response.json())
-            .then(response => {
-                let lat = response.results[0].locations[0].displayLatLng.lat;
-                let lng = response.results[0].locations[0].displayLatLng.lng;
-                cinemaLocation(lng, lat);
-            })
-            .catch(err => console.log(err));
-    }
+//             var newimgEl = document.createElement("img");
+//             newimgEl.setAttribute("src", response.films[index].images.poster[1].medium.film_image);
+//             movieEl.append(newimgEl);
+//         }
+//     });
+// }
+function latitAndLongi() {
+    console.log(cityNameEl.value);
+    fetch(`https://www.mapquestapi.com/geocoding/v1/address?key=${apiKey}&location=${cityNameEl.value}`)
+        .then(response => response.json())
+        .then(response => {
+            let lat = response.results[0].locations[0].displayLatLng.lat;
+            let lng = response.results[0].locations[0].displayLatLng.lng;
+            cinemaLocation(lat, lng);
+        })
+        .catch(err => console.log(err));
 }
 
 function cinemaLocation(lat, lng){
@@ -118,6 +114,10 @@ function cinemaLocation(lat, lng){
     };
     $.ajax(settings).done(function (response){
         console.log(response);
+        for (let index = 0; index < response.cinemas.length; index++) {
+            
+            
+        }
         }
     )
 }
