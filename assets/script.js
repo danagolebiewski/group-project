@@ -89,6 +89,7 @@ function movieQuery(event) {
 
             var newimgEl = document.createElement("img");
             newimgEl.setAttribute("src", response.films[index].images.poster[1].medium.film_image);
+            newimgEl.setAttribute("style", "width:300px;height:400px;")
             movieEl.append(newimgEl);
 
         }
