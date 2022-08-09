@@ -140,4 +140,23 @@ function cinemaLocation(lat, lng){
 }
 function moviesAndTimes(event){
     console.log(event.target.id);
+    var settings = {
+        "url": "https://api-gate2.movieglu.com/cinemasNearby/?n=10",
+        "method": "GET",
+        "timeout": 0,
+        "headers": {
+            "api-version": "v200",
+            "Authorization": "Basic REVOVjoyanJib1FKb0s0V1Q=",
+            "client": "DENV",
+            "x-api-key": "4eguyQkKb3aZtkn8n0OU76IH6fjo1J1a1JSs2zLW",
+            "device-datetime": rightMeow,
+            "territory": "US",
+            "geolocation": `${lat};${lng}`, 
+        },
+    };
+    $.ajax(settings).done(function (response){
+
+
+    }
+    )
 }
