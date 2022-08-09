@@ -114,7 +114,6 @@ function cinemaLocation(lat, lng){
         },
     };
     $.ajax(settings).done(function (response){
-        cinemaIDArray = [];
 
         for (let index = 0; index < response.cinemas.length; index++) {
             
@@ -127,14 +126,15 @@ function cinemaLocation(lat, lng){
 
             let properAddress = cinemaName + " " + cinemaAddy + " " + cinemaCity + ", " + cinemaState + " " + cinemaZip;
 
-            cinemaIDArray.push(cinemaId);
+            
 
             btn = document.createElement("button");
             btn.append(properAddress);
             moveTheaterEl.append(btn);
-            moveTheaterEl.addEventListener('click', latitAndLongi);
+            moveTheaterEl.addEventListener('click', cinemaId);
            
         }
         }
     )
 }
+function moviesAndTimes()
