@@ -11,7 +11,7 @@ var apiKeyBing = "Aopp0CnJgRFrESVuZ-oS2AEfd7f2ydTjP2S_dm4uVahSSWfS1D0ydLGwQxGV3B
 var moveTheaterEl = document.getElementById("movie_theaters");
 var showtimeEl = document.getElementById("movie_times");
 var todayDate = moment().format("YYYY-MM-DD");
-listItem = document.createElement("ul");
+var listItem = document.createElement("ul");
 
 //functions (pulling APIs filter out data putting into variables)
 
@@ -165,14 +165,15 @@ function moviesAndTimes(event){
             let filmName = response.films[index].film_name;
             let showDates = response.films[index].show_dates[0];
             let timesForMovie = response.films[index].showings.Standard.times;
+            let datesToString = toString(showDates);
 
-            let displayInfo = filmName + " " + showDates;
+            let displayInfo = filmName + " " + datesToString;
 
 
-            for (let index = 0; index < response.films[0].showings.Standard.times.length; index++) {
+            // for (let index = 0; index < response.films[0].showings.Standard.times.length; index++) {
                 
-                displayInfo = displayInfo + " " + timesForMovie;
-            }
+            //     displayInfo = displayInfo + " " + timesForMovie;
+            // }
 
             listItem.append(displayInfo)
             showtimeEl.append(listItem);
